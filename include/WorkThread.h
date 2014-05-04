@@ -3,11 +3,11 @@
 #define WORKTHREAD_H_
 
 #include "Thread.h"
+#include "Copyable.h"
 
 class ThreadPool;
 
-class WorkThread : public Thread
-{
+class WorkThread : public Thread{
 public:
     void run();
     int compute(char *);

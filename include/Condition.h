@@ -1,9 +1,4 @@
-/*
- * Condition.h
- *
- *  Created on: Apr 22, 2014
- *      Author: wing
- */
+
 
 #ifndef CONDITION_H_
 #define CONDITION_H_
@@ -11,8 +6,9 @@
 
 #include <pthread.h>
 #include "MutexLock.h"
+#include "NoneCopyable.h"
 
-class Condition{
+class Condition : public NoneCopyable{
 public:
 
 	Condition(MutexLock *p_lock);

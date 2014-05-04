@@ -58,7 +58,8 @@ bool ThreadPool::stop()
 }
 
 bool ThreadPool::addTaskToQueue(Task new_task){
-    locker_.lock();
+    // locker_.lock();
+    MutexSafeGuarde g(locker_);
     int count = 5;
     while (!isPoolOpen()&&count--)
     {
@@ -67,18 +68,18 @@ bool ThreadPool::addTaskToQueue(Task new_task){
     }
     if (count<=0)
     {
-        locker_.unlock();
+        // locker_.unlock();
         return false;
     }
     task_que_.push(new_task);
     cond_.notify();
-    locker_.unlock();
+    // locker_.unlock();
     return true;
 }
 
 bool ThreadPool::getTaskFromQueue(Task *task){
-    locker_.lock();
-
+    // locker_.lock();
+    MutexSafeGuarde g(locker_);
     while(isPoolOpen() && getTaskQueuSize()==0){
         cond_.wait();
     }
@@ -91,24 +92,26 @@ bool ThreadPool::getTaskFromQueue(Task *task){
     *task = task_que_.front();
     task_que_.pop();
 
-    locker_.unlock();
+    // locker_.unlock();
     return true;
 }
 
 bool ThreadPool::isPoolOpen()const
 {
-    mutex_.lock();
+    // mutex_.lock();
+    MutexSafeGuarde g(mutex_);
     bool ret = is_pool_open_;
-    mutex_.unlock();
+    // mutex_.unlock();
     // if other thread change the is_pool_open here ..... what will hapen?
     return ret;
 }
 
 std::queue<Task>::size_type ThreadPool::getTaskQueuSize()const
 {
-    mutex_.lock();
+    // mutex_.lock();
+    MutexSafeGuarde g(mutex_);
     std::queue<Task>::size_type size = task_que_.size();
-    mutex_.unlock();
+    // mutex_.unlock();
     // if other thread change the task_que_.size() here ..... what will hapen?
     return size;
 }

@@ -13,9 +13,9 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include "Copyable.h"
 
-
-class Address{
+class Address : public Copyable{
 public:
 	Address(unsigned int addr,const short port,const short family);
 	virtual ~Address();

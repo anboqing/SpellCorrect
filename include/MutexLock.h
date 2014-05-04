@@ -1,9 +1,3 @@
-/*
- * MutexLock.h
- *
- *  Created on: Apr 22, 2014
- *      Author: wing
- */
 
 #ifndef MUTEXLOCK_H_
 #define MUTEXLOCK_H_
@@ -11,12 +5,14 @@
 
 #include <pthread.h>
 #include <stdexcept>
+#include "NoneCopyable.h"
 
 class Condition;
 
-class MutexLock{
+class MutexLock : public NoneCopyable{
 	friend class Condition;
 public:
+	
 	MutexLock();
 	~MutexLock();
 

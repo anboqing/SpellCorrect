@@ -5,8 +5,8 @@
 #include <sys/types.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
-class Task
-{
+#include "Copyable.h"
+class Task : public Copyable{
 public:
     Task():server_fd_(0){
         memset(expression_,0,sizeof(char)*512);

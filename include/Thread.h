@@ -10,11 +10,11 @@
 
 #include <pthread.h>
 #include <stdexcept>
-
+#include "Copyable.h"
 /*
  * 这个线程类是个抽象类，希望派生类去改写它
  */
-class Thread {
+class Thread : public Copyable{
 
 public:
 	Thread();

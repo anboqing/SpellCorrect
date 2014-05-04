@@ -29,6 +29,7 @@ int main(int argc, char const *argv[])
     //bind
     socket.bindToAddess(server_addr);
     //start server;
-    UdpServer server(socket,server_addr);
+    ThreadPool pool(10);
+    UdpServer server(socket,server_addr,pool);
     server.start();
 }

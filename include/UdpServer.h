@@ -1,6 +1,5 @@
 /*
- * UdpServer.h
- *
+ *  UdpServer.h
  *  Created on: 2014年5月3日
  *      Author: anboqing
  */
@@ -11,23 +10,21 @@
 #include "ThreadPool.h"
 #include "Address.h"
 #include "Socket.h"
+#include "NoneCopyable.h"
 
-class UdpServer {
+class UdpServer : public NoneCopyable{
 public:
-	UdpServer(Socket sock,Address addr);
+	UdpServer(Socket &sock,Address &addr,ThreadPool &pool);
 	virtual ~UdpServer();
 	//regist a ThreadPool to UdpServer;
-//	void registPool(ThreadPool *pool){
-//		thread_manager_ = pool;
-//	}
+	// void registPool(ThreadPool &pool){
+	// 	thread_manager_ = pool;
+	// }
 	void start();
 private:
-	Socket socket_;
-	Address address_;
-	ThreadPool thread_manager_;
-	//forbid copy;
-	UdpServer(const UdpServer&);
-	UdpServer &operator=(const UdpServer&);
+	Socket &socket_;
+	Address &address_;
+	ThreadPool &thread_manager_;
 };
 
 #endif /* UDPSERVER_H_ */

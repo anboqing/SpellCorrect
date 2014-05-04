@@ -11,8 +11,8 @@
 
 using namespace std;
 
-UdpServer::UdpServer(Socket sock, Address addr) :
-		socket_(sock), address_(addr), thread_manager_(ThreadPool(10)) {
+UdpServer::UdpServer(Socket &sock, Address &addr,ThreadPool &pool) :
+		socket_(sock), address_(addr), thread_manager_(pool) {
 	thread_manager_.start();
 }
 

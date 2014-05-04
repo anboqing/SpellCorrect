@@ -7,8 +7,10 @@
 #include <vector>
 #include <queue>
 #include "Task.h"
+#include "NoneCopyable.h"
+#include "MutexSafeGuarde.h"
 
-class ThreadPool{
+class ThreadPool : public NoneCopyable{
 public:
     ThreadPool(std::vector<WorkThread>::size_type);
     ~ThreadPool();

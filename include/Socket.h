@@ -10,8 +10,9 @@
 #include "Address.h"
 #include <sys/socket.h>
 #include <sys/types.h>
-
-class Socket{
+#include "Copyable.h"
+ 
+class Socket : public Copyable{
 private:
 	int socket_file_descriptor_;
 public:

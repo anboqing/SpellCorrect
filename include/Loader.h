@@ -10,8 +10,9 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include "NoneCopyable.h"
 //单词从配置文件读入到vector
-class Loader{
+class Loader : public NoneCopyable{
 private:
 	std::vector<std::string> *p_word_vector_;//全局vector的指针	
 public:
