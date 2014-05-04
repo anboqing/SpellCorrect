@@ -1,13 +1,12 @@
 #!/bin/bash
 cd ../
-echo $PWD
+#echo $PWD
 cd ShellScripts
-echo $PWD
+#echo $PWD
 
 
 function start 
 {
-	#./sleep.sh &
 	cd /home/anboqing/workspace/SpellCorrection/bin/
 	./server
 }
@@ -27,7 +26,7 @@ function stat
 case $1 in
 	start) start ;;
 	stop) stop ;;
-	restart) stop start ;;
+	restart) stop ; start ;;
 	stat) stat ;;
 	*) echo "Igorn.." ;;
 esac
