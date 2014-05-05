@@ -13,16 +13,10 @@ int main(int argc, char const *argv[])
 	if(daemon(1,1)){
 		throw runtime_error("daemon");
 	}
-    string ip;
-    short port;
-
-    ifstream ifs;
-    ifs.open("../conf/config.dat");
-
-    if(!(ifs>>ip>>port)){
-    	throw runtime_error("read config");
-    }
-    cout << ip << port;
+    // config
+    Configure conf("../conf/config.dat");
+    string ip = conf.getConfigByName("ip");
+    short port = conf.getConfigByName("port");
     //prepair
     Address server_addr(htonl(INADDR_ANY),htons(port),AF_INET);
     Socket socket("udp");
