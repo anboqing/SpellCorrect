@@ -1,16 +1,7 @@
-/*
- * Thread.cpp
- *
- *  Created on: Apr 22, 2014
- *      Author: wing
- */
-
 #include "Thread.h"
 
-
-
 Thread::Thread() :
-		_tid(0) {
+		_tid(pthread_self()) {
 
 }
 Thread::~Thread() {

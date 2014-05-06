@@ -1,9 +1,4 @@
-/*
- * Thread.h
- *
- *  Created on: Apr 22, 2014
- *      Author: wing
- */
+
 
 #ifndef THREAD_H_
 #define THREAD_H_

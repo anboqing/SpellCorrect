@@ -3,8 +3,30 @@
 
 using namespace std;
 
-Configure::Configure(const string &path):configure_map_() {
-	loadConfigureToMap(path);
+Configure* Configure::config_ = NULL;
+MutexLock Configure::lock_;
+
+Configure *Configure::getInstance(){
+	if(config_==NULL){
+		lock_.lock();
+		if(config_==NULL){
+			config_ = new Configure();
+		}
+		lock_.unlock();
+	}
+	return config_;
+}
+
+Configure::Configure():configure_map_() {
+	ifstream ifs("/home/anboqing/workspace/SpellCorrection/conf/confighome.dat");
+	if(!(ifs.is_open())){
+		throw runtime_error("read config file home  --Configure.cpp");
+	}
+	string path;
+	if(ifs>>path)
+		loadConfigureToMap(path);
+	else
+		throw runtime_error("read config file home  --Configure.cpp");
 }
 
 Configure::~Configure() {

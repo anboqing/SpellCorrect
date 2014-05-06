@@ -10,7 +10,6 @@ class ThreadPool;
 class WorkThread : public Thread{
 public:
     void run();
-    int compute(char *);
     bool regeditThreadPool(ThreadPool *p_pool);
 private:
     ThreadPool *p_pool_;
