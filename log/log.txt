@@ -1,0 +1,24 @@
+ ** server load config : port is ------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : 374400768------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : 382793472------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : 407971584------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : 399578880------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : 391186176------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : -2304------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : -8395008------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+ ** server start up!! ------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : 268433152------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : 357615360------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+thread start id is : 366008064------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+loadDictToMap completely------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+ diction_map.size () is : 53------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+*****************result_queue.size() is : 2------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+*****************result_map.size() is : 2------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+loadDictToMap completely------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+ diction_map.size () is : 53------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+*****************result_queue.size() is : 4------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+*****************result_map.size() is : 4------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+loadDictToMap completely------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+ diction_map.size () is : 53------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+*****************result_queue.size() is : 4------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17
+*****************result_map.size() is : 4------at function static void Log::WRITE_LOG(const string&) In file : ../include/Log.h at line : 24 May  7 2014 00:45:17

@@ -3,5 +3,7 @@ port 8888
 row_path row/
 home_path /home/anboqing/workspace/SpellCorrection/
 diction_path data/dict.dat
-log_path log/log.dat
+log_path log/log.txt
+topk 20
+maxdistance 5
 
