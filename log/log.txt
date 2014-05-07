@@ -1,15 +1,93 @@
  ** server load config : port is 8888
-thread start id is : 1102243584
-thread start id is : 1077065472
-thread start id is : 1093850880
-thread start id is : 1085458176
+thread start id is : -1045997824
+thread start id is : -1062783232
+thread start id is : -1054390528
+thread start id is : -1037605120
+thread start id is : -1205393664
+thread start id is : -1149245696
  ** server start up!! 
-thread start id is : 1051887360
-thread start id is : 1068672768
-thread start id is : 1043494656
-thread start id is : 1060280064
-thread start id is : 934455040
-thread start id is : 1035101952
+thread start id is : -1174423808
+thread start id is : -1166031104
+thread start id is : -1157638400
+thread start id is : -1140852992
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
+loadDictToMap completely
 loadDictToMap completely
 loadDictToMap completely
 loadDictToMap completely

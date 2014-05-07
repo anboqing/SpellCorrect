@@ -23,8 +23,10 @@
 #include "json/json.h"
 using namespace std;
 
-vector<pair<string,int> > getFamiliarWords(const string &keyword)
+
+vector<pair<string, int> > getFamiliarWords(const string &keyword)
 {
+    //first version 20140506;
     Configure *conf = Configure::getInstance();
     string diction_path = conf->getConfigByName("diction_path");
     string home_path = conf->getConfigByName("home_path");
@@ -57,20 +59,90 @@ vector<pair<string,int> > getFamiliarWords(const string &keyword)
         }
     }
     //select the top k word into a vector<pair<word,frequency> > and return it;
-    vector<pair<string,int> > result_vector;
-        //get configure of topk parameter
+    vector<pair<string, int> > result_vector;
+    //get configure of topk parameter
     Configure *pconf = Configure::getInstance();
     string topk_str = pconf->getConfigByName("topk");
     int topk_int = atoi(topk_str.c_str());
-    //save result into vector 
+    //save result into vector
     while ( topk_int-- && (!result_queue.empty()))
-    { 
-        //result_queue.top().first is distance( type int) ,result_queue.top().second is map<word,frequency>; 
+    {
+        //result_queue.top().first is distance( type int) ,result_queue.top().second is map<word,frequency>;
         map<string, int> mpp = result_queue.top().second;
-
+        //sort result by the dis and frequency : run to here the distance is small --> large
         int ifrequency = (*(mpp.begin())).second;
         string sword = (*(mpp.begin())).first;
         //make pair<string,int> and push into vector < pair<string,int> >
+        result_vector.push_back(make_pair(sword, ifrequency));
+        result_queue.pop();
+    }
+    return result_vector;
+}
+
+class Data
+{
+public:
+    int distance_;
+    int frequency_;
+    string word_;
+    Data() {}
+    Data(int dis, int fre, string word): distance_(dis), frequency_(fre), word_(word)
+    {
+    }
+    ~Data() {}
+    friend bool operator<(const Data &left, const Data &right)
+    {
+        if (left.distance_ != right.distance_)
+        {
+            return left.distance_ > right.distance_;
+        }
+        else
+        {
+            return left.frequency_ < right.frequency_;
+        }
+    }
+};
+
+vector<pair<string, int> > getFamiliarWordsByStruct(const string &keyword)
+{
+    Configure *conf = Configure::getInstance();
+    string diction_path = conf->getConfigByName("diction_path");
+    string home_path = conf->getConfigByName("home_path");
+    string path = home_path + diction_path;
+
+    Diction dict(path.c_str());
+    //load dictionary to memory
+    map<string, int> diction_map = dict.getDictMap();
+
+    priority_queue<Data> result_queue;
+
+    for ( map<string, int>::iterator ix = diction_map.begin(); ix != diction_map.end(); ++ix)
+    {
+        //find the edit Distance between keyword and each word in the map
+        int dis = getEditDistance((*ix).first, keyword);
+        //id ed < maxdistance then add the word into result
+        Configure *pconf = Configure::getInstance();
+        string mdis = pconf->getConfigByName("maxdistance");
+        int maxdistance = atoi(mdis.c_str());
+        if (dis < maxdistance)
+        {
+            Data data(dis, (*ix).second, (*ix).first);
+            result_queue.push(data);
+        }
+    }
+
+    vector<pair<string, int> > result_vector;
+    //get configure of topk parameter
+    Configure *pconf = Configure::getInstance();
+    string topk_str = pconf->getConfigByName("topk");
+    int topk_int = atoi(topk_str.c_str());
+
+    while ( topk_int-- && (!result_queue.empty()))
+    {
+        Data data = result_queue.top();
+        int ifrequency = data.frequency_;
+        string sword = data.word_;
+
         result_vector.push_back(make_pair(sword, ifrequency));
         result_queue.pop();
     }
@@ -82,8 +154,9 @@ string json_string(string keyword)
     //get edit distance
     Json::Value root ;
     Json::Value arr ;
-    vector<pair<string,int> > res_vec = getFamiliarWords(keyword);
-    for (vector<pair<string,int> >::iterator iter = res_vec.begin(); iter != res_vec.end(); ++iter)
+    // vector<pair<string, int> > res_vec = getFamiliarWords(keyword);
+    vector<pair<string, int> > res_vec = getFamiliarWordsByStruct(keyword);
+    for (vector<pair<string, int> >::iterator iter = res_vec.begin(); iter != res_vec.end(); ++iter)
     {
         //serilize result into json;
         Json::Value elem ;
