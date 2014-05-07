@@ -5,7 +5,7 @@ maxdistance 5
 
 row_path row/
 home_path /home/anboqing/workspace/SpellCorrection/
-diction_path data/dict.dat
+data_path data/dict.dat
 log_path log/log.txt
 mp_utf8_path dict/jieba.dict.utf8
 hmm_utf8_path dict/hmm_model.utf8

@@ -1,94 +1,12 @@
- ** server load config : port is 8888
-thread start id is : -1045997824
-thread start id is : -1062783232
-thread start id is : -1054390528
-thread start id is : -1037605120
-thread start id is : -1205393664
-thread start id is : -1149245696
- ** server start up!! 
-thread start id is : -1174423808
-thread start id is : -1166031104
-thread start id is : -1157638400
-thread start id is : -1140852992
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
-loadDictToMap completely
+[TIME]:00:02:37  thread start id is : -1997617408   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  thread start id is : -2006010112   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  thread start id is : -2014402816   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  thread start id is : -1989224704   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  thread start id is : 2147481344   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  thread start id is : 2139088640   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  thread start id is : -2022795520   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  thread start id is : -2031188224   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  server start up ready !   [FUNCTION]: void UdpServer::start() [FILE] ./src/UdpServer.cpp [LINE] 28 
+[TIME]:00:02:37  thread start id is : -2047973632   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:37  thread start id is : -2039580928   [FUNCTION]: virtual void WorkThread::run() [FILE] ./src/WorkThread.cpp [LINE] 168 
+[TIME]:00:02:35  loadDictToMap completely   [FUNCTION]: void Diction::loadDictToMap(const string&) [FILE] ./src/Diction.cpp [LINE] 43 

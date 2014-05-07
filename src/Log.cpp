@@ -46,11 +46,11 @@ void Log::writeLog(const std::string &log_msg,
 {
     //consider the condition of muti-thread!!!
     locker_.lock();
+    writer_ << "[TIME]:"<<timer<< "  ";
     writer_ << log_msg;
-    // writer_ << "------at function "<< func;
-    // writer_ << " In file : "<<file;
-    // writer_ << " at line : " << line << " ";
-    // writer_ << date << " " << timer ;
+    writer_ << "   [FUNCTION]: "<< func;
+    writer_ << " [FILE] "<<file;
+    writer_ << " [LINE] " << line << " ";
     writer_ << endl;
     locker_.unlock();
 }

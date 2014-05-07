@@ -18,20 +18,20 @@ public:
                   const char *timer = __TIME__,
                   const char *func = __PRETTY_FUNCTION__
                  );
-    static void WRITE_LOG(const std::string &str)
-    {
-        Log *p_log = Log::getInstance();
-        p_log->writeLog(str, __FILE__, __LINE__, __DATE__, __TIME__, __PRETTY_FUNCTION__);
-    }
-    static void APEND_NUM(std::string &str, int n)
-    {
-        char *buf = new char[20];
-        sprintf(buf, "%d", n);
-        std::string len(buf);
-        str += len;
-        delete[] buf;
-        WRITE_LOG(str);
-    }
+    // static void write_str(const std::string &str)
+    // {
+    //     Log *p_log = Log::getInstance();
+    //     p_log->writeLog(str, __FILE__, __LINE__, __DATE__, __TIME__, __PRETTY_FUNCTION__);
+    // }
+    // static void write_num(std::string &str, int n)
+    // {
+    //     char *buf = new char[20];
+    //     sprintf(buf, "%d", n);
+    //     std::string len(buf);
+    //     str += len;
+    //     delete[] buf;
+    //     WRITE_STR(str);
+    // }
 
 private:
     Log();
@@ -40,6 +40,9 @@ private:
     static MutexLock locker_;
     std::ofstream writer_;
 };
-#define WRITE_LOGG(str) {Log *p_log = Log::getInstance();p_log->writeLog(str,__FILE__,__LINE__,__DATE__,__TIME__,__PRETTY_FUNCTION__);}
+
+#define WRITE_STR(str) {Log *p_log = Log::getInstance();p_log->writeLog(str,__FILE__,__LINE__,__DATE__,__TIME__,__PRETTY_FUNCTION__);}
+
+#define WRITE_NUM(str,n) {char *buf = new char[20];sprintf(buf, "%d", n);std::string len(buf);str += len;delete[] buf;WRITE_STR(str);}
 
 #endif

@@ -20,6 +20,7 @@ int main(int argc, char const *argv[])
     if (daemon(1, 1))
     {
         throw runtime_error("daemon");
+        WRITE_STR(string(" turn main to deamon error"));
     }
     // config
     Configure *conf = Configure::getInstance();
@@ -29,11 +30,9 @@ int main(int argc, char const *argv[])
     if (!(ss >> port))
     {
         throw runtime_error("sstream");
+        WRITE_STR(string("trans str-port to int-port error"));
     }
-#ifndef NDEBUG
-    string s(" ** server load config : port is ") ;
-    Log::APEND_NUM(s,port);
-#endif
+
     // prepair
     Address server_addr(htonl(INADDR_ANY), htons(port), AF_INET);
     Socket socket("udp");

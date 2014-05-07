@@ -11,6 +11,8 @@
 
 using namespace std;
 
+
+
 Diction::Diction(const string &path): dict_map_()
 {
     loadDictToMap(path);
@@ -25,6 +27,7 @@ void Diction::loadDictToMap(const string &path)
     if (!ifs.is_open())
     {
         throw runtime_error("load dict to map");
+        WRITE_STR(string(" load dict to map error "));
     }
     string line;
     while (getline(ifs, line))
@@ -37,7 +40,7 @@ void Diction::loadDictToMap(const string &path)
         dict_map_[word] = frequency;
     }
 #ifndef NDEBUG
-    Log::WRITE_LOG(string("loadDictToMap completely"));
+    WRITE_STR(string("loadDictToMap completely"));
 #endif
 }
 void cleanToken(char *);
@@ -59,7 +62,7 @@ void process(ifstream &ifs, map<string, int> &mp)
         }
     }
 #ifndef NDEBUG
-    Log::WRITE_LOG(string(" process completely --Diction.cpp "));
+    WRITE_STR(string(" process completely"));
 #endif
 }
 
@@ -69,6 +72,7 @@ void Diction::traverseDir(const char *row_path, map<string, int> &mp)
     if (NULL == dp)
     {
         throw std::runtime_error("cannot open directory");
+        WRITE_STR(string("cannot open directory"));
     }
     chdir(row_path);
     struct dirent *entry;
@@ -114,15 +118,16 @@ void Diction::buildMapFromRow(const std::string &row_path)
     {
         for (map<string, int>::iterator iter = mp.begin(); iter != mp.end(); ++iter)
         {
-// #ifndef NDEBUG
-//             cout << iter->first << " --Diction buildMapFromRow " << __LINE__ << endl;
-// #endif
+            // #ifndef NDEBUG
+            //             cout << iter->first << " --Diction buildMapFromRow " << __LINE__ << endl;
+            // #endif
             ofs << iter->first << " " << iter->second << "\n";
         }
     }
     else
     {
-        throw runtime_error("open output file --Diction.cpp");
+        throw runtime_error("open output file error");
+        WRITE_STR(string("open output file error"));
     }
     ofs.close();
 }
@@ -176,3 +181,22 @@ map<string, int>::iterator Diction::find(const string &keyword)
     return dict_map_.find(keyword);
 }
 
+Diction *Diction::instance_ = NULL;
+MutexLock Diction::lock_;
+
+Diction *Diction::getInstance()
+{
+    if (instance_ == NULL)
+    {
+        lock_.lock();
+        if (instance_ == NULL)
+        {
+            Configure *pconf = Configure::getInstance();
+            string home_path = pconf->getConfigByName("home_path");
+            string data_path = pconf->getConfigByName("data_path");
+            instance_ = new Diction(home_path+data_path);
+        }
+        lock_.unlock();
+    }
+    return instance_;
+}

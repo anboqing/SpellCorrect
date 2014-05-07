@@ -27,14 +27,9 @@ using namespace std;
 vector<pair<string, int> > getFamiliarWords(const string &keyword)
 {
     //first version 20140506;
-    Configure *conf = Configure::getInstance();
-    string diction_path = conf->getConfigByName("diction_path");
-    string home_path = conf->getConfigByName("home_path");
-    string path = home_path + diction_path;
-
-    Diction dict(path.c_str());
+    Diction *pdict = Diction::getInstance();
     //load dictionary to memory
-    map<string, int> diction_map = dict.getDictMap();
+    map<string, int> diction_map = pdict->getDictMap();
 
     //define a priority queue to save:
     //  pair < distance , map < word , frequency > >
@@ -105,14 +100,9 @@ public:
 
 vector<pair<string, int> > getFamiliarWordsByStruct(const string &keyword)
 {
-    Configure *conf = Configure::getInstance();
-    string diction_path = conf->getConfigByName("diction_path");
-    string home_path = conf->getConfigByName("home_path");
-    string path = home_path + diction_path;
-
-    Diction dict(path.c_str());
+    Diction *pdict = Diction::getInstance();
     //load dictionary to memory
-    map<string, int> diction_map = dict.getDictMap();
+    map<string, int> diction_map = pdict->getDictMap();
 
     priority_queue<Data> result_queue;
 
@@ -175,7 +165,7 @@ void WorkThread::run()
 {
 #ifndef NDEBUG
     string str( "thread start id is : ");
-    Log::APEND_NUM(str, get_tid());
+    WRITE_NUM(str, (int)get_tid());
 #endif
     while (true)
     {

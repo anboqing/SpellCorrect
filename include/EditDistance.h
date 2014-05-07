@@ -9,6 +9,7 @@ int getMin(int a, int b, int c)
     return min1 > c ? c : min1;
 }
 
+
 int getEditDistance(const std::string &sa, const std::string &sb)
 {
     int **matrix = new int *[sa.size() + 1];
