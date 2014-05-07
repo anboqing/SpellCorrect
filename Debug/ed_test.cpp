@@ -52,7 +52,7 @@ int getEditDistance(const string &sa, const string &sb)
 
 int main(int argc, char const *argv[])
 {
-    string a("a");
+    string a("above");
     string above("above");
     std::cout << getEditDistance(a, above);
     return 0;

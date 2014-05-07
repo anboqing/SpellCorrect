@@ -1,0 +1,28 @@
+ ** server load config : port is 8888
+thread start id is : -1896962304
+thread start id is : -1905355008
+thread start id is : -1922140416
+thread start id is : -1913747712
+thread start id is : -2013268224
+thread start id is : -1930533120
+thread start id is : -2021660928
+ ** server start up!! 
+thread start id is : -2046839040
+thread start id is : -2038446336
+thread start id is : -2030053632
+loadDictToMap completely
+ diction_map.size () is : 30440
+loadDictToMap completely
+ diction_map.size () is : 30440
+*****************result_queue.size() is : 4047
+*****************result_map.size() is : 19
+loadDictToMap completely
+ diction_map.size () is : 30440
+*****************result_queue.size() is : 4782
+*****************result_map.size() is : 19
+loadDictToMap completely
+ diction_map.size () is : 30440
+*****************result_queue.size() is : 4782
+*****************result_map.size() is : 19
+*****************result_queue.size() is : 4896
+*****************result_map.size() is : 19

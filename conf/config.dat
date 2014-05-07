@@ -2,7 +2,7 @@ ip 127.0.0.1
 port 8888
 row_path row/
 home_path /home/anboqing/workspace/SpellCorrection/
-diction_path data/test.dat
+diction_path data/dict.dat
 log_path log/log.txt
 topk 20
 maxdistance 5

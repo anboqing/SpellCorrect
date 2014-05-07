@@ -40,6 +40,6 @@ private:
     static MutexLock locker_;
     std::ofstream writer_;
 };
-// #define WRITE_LOG(str) {Log *p_log = Log::getInstance();p_log->writeLog(str,__FILE__,__LINE__,__DATE__,__TIME__,__PRETTY_FUNCTION__);}
+#define WRITE_LOGG(str) {Log *p_log = Log::getInstance();p_log->writeLog(str,__FILE__,__LINE__,__DATE__,__TIME__,__PRETTY_FUNCTION__);}
 
 #endif

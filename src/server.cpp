@@ -32,9 +32,7 @@ int main(int argc, char const *argv[])
     }
 #ifndef NDEBUG
     string s(" ** server load config : port is ") ;
-    // Log *plog = Log::getInstance();
-    // plog->writeLog(s);
-    Log::WRITE_LOG(s);
+    Log::APEND_NUM(s,port);
 #endif
     // prepair
     Address server_addr(htonl(INADDR_ANY), htons(port), AF_INET);

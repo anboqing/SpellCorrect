@@ -23,7 +23,7 @@
 #include "json/json.h"
 using namespace std;
 
-map<string, int> getFamiliarWords(const string &keyword)
+vector<pair<string,int> > getFamiliarWords(const string &keyword)
 {
     Configure *conf = Configure::getInstance();
     string diction_path = conf->getConfigByName("diction_path");
@@ -31,14 +31,11 @@ map<string, int> getFamiliarWords(const string &keyword)
     string path = home_path + diction_path;
 
     Diction dict(path.c_str());
-
+    //load dictionary to memory
     map<string, int> diction_map = dict.getDictMap();
-#ifndef NDEBUG
-    string str(" diction_map.size () is : ");
-    Log::APEND_NUM(str, diction_map.size());
-#endif
+
     //define a priority queue to save:
-    //  pair < distance , pair < word , frequency > >
+    //  pair < distance , map < word , frequency > >
     std::priority_queue<pair<int, map<string, int> >,
         std::vector<pair<int, map<string, int> > >,
         std::greater<pair<int, map<string, int> > > > result_queue ;
@@ -47,7 +44,7 @@ map<string, int> getFamiliarWords(const string &keyword)
     {
         //find the edit Distance between keyword and each word in the map
         int dis = getEditDistance((*ix).first, keyword);
-        //id ed < MAX_DIS then add the word into result map
+        //id ed < maxdistance then add the word into result
         Configure *pconf = Configure::getInstance();
         string mdis = pconf->getConfigByName("maxdistance");
         int maxdistance = atoi(mdis.c_str());
@@ -59,28 +56,25 @@ map<string, int> getFamiliarWords(const string &keyword)
             result_queue.push(dis_pair);
         }
     }
-#ifndef NDEBUG
-    string str3("*****************result_queue.size() is : ");
-    Log::APEND_NUM(str3, result_queue.size());
-#endif
-    //select the top n word into a map and return it;
-    map<string, int> result_map;
+    //select the top k word into a vector<pair<word,frequency> > and return it;
+    vector<pair<string,int> > result_vector;
+        //get configure of topk parameter
     Configure *pconf = Configure::getInstance();
     string topk_str = pconf->getConfigByName("topk");
     int topk_int = atoi(topk_str.c_str());
-    while ( --topk_int && (!result_queue.empty()))
-    {
+    //save result into vector 
+    while ( topk_int-- && (!result_queue.empty()))
+    { 
+        //result_queue.top().first is distance( type int) ,result_queue.top().second is map<word,frequency>; 
         map<string, int> mpp = result_queue.top().second;
-        string first = (*(mpp.begin())).first;
-        int second = (*(mpp.begin())).second;
-        result_map.insert(make_pair(first, second));
+
+        int ifrequency = (*(mpp.begin())).second;
+        string sword = (*(mpp.begin())).first;
+        //make pair<string,int> and push into vector < pair<string,int> >
+        result_vector.push_back(make_pair(sword, ifrequency));
         result_queue.pop();
     }
-#ifndef NDEBUG
-    string str2("*****************result_map.size() is : ");
-    Log::APEND_NUM(str2, result_map.size());
-#endif
-    return result_map;
+    return result_vector;
 }
 
 string json_string(string keyword)
@@ -88,11 +82,8 @@ string json_string(string keyword)
     //get edit distance
     Json::Value root ;
     Json::Value arr ;
-    map<string, int> mp = getFamiliarWords(keyword);
-#ifdef NDEBUG
-    Log::WRITE_LOG(string("json_string prepaired ok!"));
-#endif
-    for (map<string, int>::iterator iter = mp.begin(); iter != mp.end(); ++iter)
+    vector<pair<string,int> > res_vec = getFamiliarWords(keyword);
+    for (vector<pair<string,int> >::iterator iter = res_vec.begin(); iter != res_vec.end(); ++iter)
     {
         //serilize result into json;
         Json::Value elem ;
@@ -100,9 +91,6 @@ string json_string(string keyword)
         elem["content"] = (*iter).second ;
         arr.append(elem);
     }
-#ifdef NDEBUG
-    Log::WRITE_LOG(string("json_string add to JSON ok!" ));
-#endif
     root["files"] = arr;
     Json::FastWriter writer ;
     Json::StyledWriter stlwriter ;
