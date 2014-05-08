@@ -28,7 +28,7 @@ std::string EncodingConverter::gbk_to_utf8(const std::string &s) {
 	int to_len = MAX_SIZE;
 	code_convert("gbk", "utf-8", from, from_len, to, to_len);
 	string ret(to);
-	delete[] from;
+	//delete[] from;
 	delete[] to;
 	return ret;
 }
@@ -41,7 +41,7 @@ std::string EncodingConverter::utf8_to_gbk(const std::string &s) {
 	int to_len = MAX_SIZE;
 	code_convert("utf-8", "gbk", from, from_len, to, to_len);
 	string ret(to);
-	delete[] from;
+	//delete[] from;
 	delete[] to;
 	return ret;
 }

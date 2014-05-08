@@ -3,8 +3,9 @@
 
 #include <fstream>
 
-const char *const dict_path = "../dict/jieba.dict.utf8";
-const char *const model_path = "../dict/hmm_model.utf8";
+const char *const dict_path = "../dict/jieba.dict.gbk";
+const char *const model_path = "../dict/hmm_model.gbk";
+
 /*
 ## 分词
 ### jieba.dict.utf8/gbk
@@ -13,6 +14,7 @@ const char *const model_path = "../dict/hmm_model.utf8";
 作为隐式马尔科夫模型(HMMSegment: Hidden Markov Model)分词所使用的词典。
 __对于MixSegment(混合MPSegment和HMMSegment两者)则同时使用以上两个词典__
 */
+
 using namespace CppJieba;
 
 int main(int argc, char const *argv[])
@@ -36,13 +38,30 @@ int main(int argc, char const *argv[])
 			++(wmp[(*iter)]);
 		}
 	}
+	
 	ifs.close();
 	//save map to file
 	ofstream ofs;
 	ofs.open("mydick.dat");
-	
+	set<string> tokens;
+	tokens.insert("，");
+	tokens.insert("。");
+	tokens.insert("：");
+	tokens.insert("？");
+	tokens.insert("；");
+	tokens.insert("“");
+	tokens.insert("”");
+	tokens.insert("‘");
+	tokens.insert("’");
+	tokens.insert("！");
+	tokens.insert("、");
+	tokens.insert("《");
+	tokens.insert("》");
+	set<string>::iterator end = tokens.end();
 	for(map<string,int>::iterator iter = wmp.begin();iter!=wmp.end();++iter){
-		ofs << (*iter).first << " " << (*iter).second<< "\n";
+		if(end==tokens.find((*iter).first)){
+			ofs<<(*iter).first<< " " << (*iter).second<< "\n";
+		}
 	}
 
 	ofs.close();

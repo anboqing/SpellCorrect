@@ -1,0 +1,2 @@
+g++ -g -o buildDict.exe diction_test.cpp ../src/EncodingConverter.cpp ../src/Log.cpp ../src/Configure.cpp ../src/MutexLock.cpp ../src/Diction.cpp -I../include/jiba/ -I../include/     
+
