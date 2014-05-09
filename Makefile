@@ -14,7 +14,7 @@ start: $(EXE)
 $(EXE):$(OBJS)
 		$(CC) -o $@  $(OBJS) -L $(LIBDIR) $(addprefix -l, $(LIBS)); $(RM) $(SOURCEDIR)/*.o $(RM) $(SOURCEDIR)/*.co  $(RM) $(SOURCEDIR)/*.cco
 $(SOURCEDIR)/%.o:$(SOURCEDIR)/%.cpp
-		$(CC) -c $(CXXFLAGS) $< -o $@ -I $(INCLUDEDIR) -I$(INCLUDEDIR)/jiba/ -D NDEBUG
+		$(CC) -c $(CXXFLAGS) $< -o $@ -I $(INCLUDEDIR) -I$(INCLUDEDIR)/jieba/ -D NDEBUG
 .PHONY:clean rebuild
 clean:
 		@$(RM) $(DIR)/*.exe $(RM) $(SOURCEDIR)/*.o $(RM) $(SOURCEDIR)/*.co  $(RM) $(SOURCEDIR)/*.cco 

@@ -68,3 +68,33 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
+
+void traverseDir(const char *row_path)
+{
+    DIR *dp = opendir(row_path);
+    if (NULL == dp)
+    {
+        WRITE_STR(string("cannot open directory"));
+        throw std::runtime_error("cannot open directory");
+    }
+    chdir(row_path);
+    struct dirent *entry;
+    struct stat statbuf;
+
+    while ((entry = readdir(dp)) != NULL)
+    {
+        stat(entry->d_name, &statbuf);
+        if (S_ISDIR(statbuf.st_mode))
+        {
+            if (strcmp(".", entry->d_name) == 0 || strcmp("..", entry->d_name) == 0)
+                continue;
+            traverseDir(entry->d_name);
+        }
+        else
+        {
+            buildMapFromRow(entry->d_name);
+        }
+    }
+    chdir("..");
+    closedir(dp);
+}
