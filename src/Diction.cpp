@@ -55,8 +55,8 @@ void Diction::loadDictToMap(const string &path)
     ifstream ifs(path.c_str());
     if (!ifs.is_open())
     {
+        WRITE_STR(string(" load gbk dict to map error "));
         throw runtime_error("load dict to map");
-        // WRITE_STR(string(" load dict to map error "));
     }
     string line;
     while (getline(ifs, line))
@@ -69,9 +69,6 @@ void Diction::loadDictToMap(const string &path)
         dict_map_[word] = frequency;
         // issm.close();
     }
-#ifndef NDEBUG
-    WRITE_STR(string("loadDictToMap completely"));
-#endif
 }
 
 
@@ -163,13 +160,13 @@ void Diction::readFileToMap(const char *filename)
     while (ifs >> line)
     {
         //clean the tokens
-        for (string::size_type ix = 0 ; ix != line.size(); ++ix)
-        {
-            if (isascii(line[ix]))
-            {
-                line[ix] = ' ';
-            }
-        }
+        // for (string::size_type ix = 0 ; ix != line.size(); ++ix)
+        // {
+        //     if (isascii(line[ix]))
+        //     {
+        //         line[ix] = ' ';
+        //     }
+        // }
         words.clear();
         segementor_.cut(line,words);
         for(vector<string>::iterator iter = words.begin();iter!=words.end();++iter){

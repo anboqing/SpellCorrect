@@ -1,81 +1,98 @@
 #include <stdint.h>
-
-#include <vector>
-#include <string>
 #include <stdexcept>
+#include <string>
+#include <iostream>
+#include <vector>
+#include "EncodingConverter.h"
 
-
-bool is_gbk_first_alpah(unsigned char c)
+int getMin(int a, int b, int c)
 {
-    return c >= 0x81 && c <= 0xFE;
+    int min1 = a > b ? b : a;
+    return min1 > c ? c : min1;
 }
 
-void parse_gbk_string(const string &s, vector<uint16_t> &vec)
+bool isGbkFirstByte(const unsigned char &uc)
 {
-    for (string::size_type ix = 0; ix != s.size() ; ++ix)
+    return uc >= 0x81 && uc <= 0xFE;
+}
+
+void saveGbk2Vector(const std::string &str, std::vector<uint16_t> &v)
+{
+    v.clear();
+    for (std::string::size_type ix = 0; ix != str.size(); ++ix)
     {
-        if (is_gbk_first_alpah(s[ix]))
+        if (isGbkFirstByte(str[ix]))
         {
-            if (ix + 1 == s.size())
+            if (ix + 1 == str.size())
             {
-                throw runtime_error("invalid GBK string");
+                throw std::runtime_error("gbk error");
             }
-            unsigned char c1 = s[ix];
-            unsigned char c2 = s[ix + 1];
-            uint16_t t = (c1 << 8) + c2;
-            vec.push_back(t);
-            ++ix;
+            uint8_t high = str[ix];
+            uint8_t low = str[++ix];
+            uint16_t whole = (high << 8) + low;
+            v.push_back(whole);
         }
         else
         {
-            vec.push_back((uint16_t)(unsigned char)s[ix]);
+            uint8_t en = str[ix];
+            v.push_back((uint16_t)en);
         }
     }
 }
 
-int main(int argc, char const *argv[])
+int editDistance(const std::vector<uint16_t>  &sa, const std::vector<uint16_t> &sb)
 {
-    string s = "安勃卿";
-    vector<uint16_t> vec;
-    EncodingConverter trans;
-    s = trans.utf8_to_gbk(s);
-
-    // for(unsigned char x : s){
-    //  printf("0x%x\n",s );
-    // }
-
-    parse_gbk_string(s, vec);
-    for (vector<uint16_t>::iterator iter = vec.begin(); iter != vec.end(); ++iter)
+    int **matrix = new int *[sa.size() + 1];
+    for (std::vector<uint16_t>::size_type i = 0; i <= sa.size(); ++i)
     {
-
-
+        matrix[i] = new int[sb.size() + 1];
+        memset(matrix[i], 0, sb.size() + 1);
     }
-    return 0;
+
+    for (std::vector<uint16_t>::size_type i = 0; i <= sa.size(); ++i)
+    {
+        matrix[i][0] = i;
+    }
+    for (std::vector<uint16_t>::size_type i = 0; i <= sb.size(); ++i)
+    {
+        matrix[0][i] = i;
+    }
+
+    for (std::vector<uint16_t>::size_type i = 1; i <= sa.size(); ++i)
+    {
+        for (std::vector<uint16_t>::size_type j = 1; j <= sb.size(); ++j)
+        {
+            int cost = sa[i - 1] == sb[j - 1] ? 0 : 1;
+            matrix[i][j] =
+                getMin( matrix[i - 1][j] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j - 1] + cost);
+        }
+    }
+    int ret = matrix[sa.size()][sb.size()];
+    for (std::vector<uint16_t>::size_type i = 0; i <= sa.size(); ++i)
+    {
+        delete[] matrix[i];
+    }
+    delete matrix;
+    return ret;
 }
 
-int ed(const vector<uint16_t> &w1,const vector<uint16_t> &w2)
+int getEditDistance(const std::string &sa, const std::string &sb)
 {
-    int len_a = w1.size();
-    int len_b = w2.size();
-    int memo[100][100];
-    memset(memo, 0x00, 100 * 100 * sizeof(int));
-    for (int i = 0; i < = len_a; ++i)
-    {
-        mem[i][0] = i;
-    }
-    for (int j = 0; j <= lne_b; ++j)
-    {
-        mem[0][j] = j;
-    }
-
-    for(int i = 1;i<=len_a; ++i){
-    	for(int j = 1; j<=len_b;++j){
-    		if(w1[i-1]==w2[j-1]){
-    			memo[i][j]=memo[i-1][j-1];
-    		}else{
-    			memo[i][j] = min(mem[i-1][j]+1,min(memo[i][j-1]+1,memo[i-1][j-1]);
-    		}
-    	}
-    }
-    return memo[len_a][len_b];
+    std::vector<uint16_t> va, vb;
+    saveGbk2Vector(sa, va);
+    saveGbk2Vector(sb, vb);
+    return editDistance(va, vb);
+}
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    string sa("你好");
+    string sb("你");
+    EncodingConverter convertor;
+    string a = convertor.utf8_to_gbk(sa);
+    string b = convertor.utf8_to_gbk(sb);
+    cout <<getEditDistance(a,b);
+    return 0;
 }

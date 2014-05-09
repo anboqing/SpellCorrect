@@ -18,20 +18,6 @@ public:
                   const char *timer = __TIME__,
                   const char *func = __PRETTY_FUNCTION__
                  );
-    // static void write_str(const std::string &str)
-    // {
-    //     Log *p_log = Log::getInstance();
-    //     p_log->writeLog(str, __FILE__, __LINE__, __DATE__, __TIME__, __PRETTY_FUNCTION__);
-    // }
-    // static void write_num(std::string &str, int n)
-    // {
-    //     char *buf = new char[20];
-    //     sprintf(buf, "%d", n);
-    //     std::string len(buf);
-    //     str += len;
-    //     delete[] buf;
-    //     WRITE_STR(str);
-    // }
 
 private:
     Log();

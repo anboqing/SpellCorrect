@@ -1,1 +1,1 @@
-[TIME]:01:32:11  loadDictToMap completely   [FUNCTION]: void Diction::loadDictToMap(const string&) [FILE] ../src/Diction.cpp [LINE] 73 
+[TIME]:21:15:28  server start up ready !   [FUNCTION]: void UdpServer::start() [FILE] src/UdpServer.cpp [LINE] 32 

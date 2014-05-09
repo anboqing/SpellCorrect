@@ -17,24 +17,24 @@
 #include "ThreadPool.h"
 #include "Log.h"
 #include "Query.h"
-
+#include "EncodingConverter.h"
 #include "json/json.h"
 using namespace std;
 
 string json_string(string keyword)
 {
+    EncodingConverter converter;
     //get edit distance
     Json::Value root ;
     Json::Value arr ;
-    
+    keyword = converter.utf8_to_gbk(keyword);
     Query *pquery = Query::getInstance();
     vector<pair<string, int> > res_vec = pquery->getFamiliarWordsByStruct(keyword);
-
     for (vector<pair<string, int> >::iterator iter = res_vec.begin(); iter != res_vec.end(); ++iter)
     {
         //serilize result into json;
         Json::Value elem ;
-        elem["title"] = (*iter).first;
+        elem["title"] = converter.gbk_to_utf8((*iter).first);
         elem["content"] = (*iter).second ;
         arr.append(elem);
     }
@@ -47,10 +47,10 @@ string json_string(string keyword)
 
 void WorkThread::run()
 {
-#ifndef NDEBUG
-    string str( "thread start id is : ");
-    WRITE_NUM(str, (int)get_tid());
-#endif
+    // #ifndef NDEBUG
+    //     string str( "thread start id is : ");
+    //     WRITE_NUM(str, (int)get_tid());
+    // #endif
     while (true)
     {
         Task t;
