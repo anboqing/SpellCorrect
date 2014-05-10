@@ -38,8 +38,7 @@ private:
     ~Query();
 public:
     static Query *getInstance();
-    std::vector<std::pair<std::string, int> > getFamiliarWordsByStruct(const std::string &keyword);
-    std::vector<std::pair<std::string, int> > getFamiliarWords(const std::string &keyword);
+    std::vector<std::pair<std::string, int> > getSimiliarWordsByStruct(const std::string &keyword);
 };
 
 

@@ -1,1 +1,0 @@
-[TIME]:21:15:28  server start up ready !   [FUNCTION]: void UdpServer::start() [FILE] src/UdpServer.cpp [LINE] 32 

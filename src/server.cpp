@@ -24,6 +24,10 @@ int main(int argc, char const *argv[])
     }
     // config
     Configure *conf = Configure::getInstance();
+    string mtn = conf->getConfigByName("max_thread_num");
+    int max_thread_num = atoi(mtn.c_str());
+    ThreadPool pool(max_thread_num);
+
     string sport = conf->getConfigByName("port");
     istringstream ss(sport);
     short port = 0;
@@ -39,7 +43,7 @@ int main(int argc, char const *argv[])
     //bind
     socket.bindToAddess(server_addr);
     //start server;
-    ThreadPool pool(10);
+    
     UdpServer server(socket, server_addr, pool);
     server.start();
 }

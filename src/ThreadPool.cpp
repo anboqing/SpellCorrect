@@ -1,4 +1,5 @@
 #include "ThreadPool.h"
+#include <stdlib.h>
 
 ThreadPool::ThreadPool(std::vector<WorkThread>::size_type num):
     total_thread_quantity_(num),
@@ -7,7 +8,8 @@ ThreadPool::ThreadPool(std::vector<WorkThread>::size_type num):
     locker_(),
     mutex_(),
     cond_(&locker_),
-    is_pool_open_(false)
+    is_pool_open_(false),
+    cache_manager_(thread_pool_)
 {
     //regedit all the work thread;
     for (std::vector<WorkThread>::iterator iter = thread_pool_.begin();
@@ -33,6 +35,8 @@ bool ThreadPool::start()
     {
         iter->start();
     }
+    //start cache manager
+    cache_manager_.run();
     return true;
 }
 bool ThreadPool::stop()
@@ -64,7 +68,6 @@ bool ThreadPool::addTaskToQueue(Task new_task){
     while (!isPoolOpen()&&count--)
     {
         start();
-        sleep(1);
     }
     if (count<=0)
     {

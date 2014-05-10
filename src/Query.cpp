@@ -32,18 +32,25 @@ Query *Query::getInstance()
 }
 
 
-vector<pair<string, int> > Query::getFamiliarWordsByStruct(const string &keyword)
+vector<pair<string, int> > Query::getSimiliarWordsByStruct(const string &keyword)
 {
     Diction *pdict = Diction::getInstance();
-    //load dictionary to memory
+    //load the WHOLE dictionary to memory
     map<string, int> diction_map = pdict->getDictMap();
-
+    // use priority_queue to build an small-root-heap to select the top k similar word 
     priority_queue<Data> result_queue;
+
+    //load config message:
     Configure *pconf = Configure::getInstance();
     string mdis = pconf->getConfigByName("maxdistance");
     string s_max_diff_len = pconf->getConfigByName("max_diff_len");
     int maxdistance = atoi(mdis.c_str());
     int max_diff_len = atoi(s_max_diff_len.c_str());
+
+    // search from cache firstly ...
+
+    
+
     for ( map<string, int>::iterator ix = diction_map.begin(); ix != diction_map.end(); ++ix)
     {
         //find the edit Distance between keyword and each word in the map

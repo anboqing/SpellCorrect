@@ -9,7 +9,7 @@ LIBS:= pthread json
 OCPP:= $(patsubst $(SOURCEDIR)/%.cpp, $(SOURCEDIR)/%.o, $(wildcard $(SOURCEDIR)/*.cpp))
 OBJS:= $(OCPP)
 RM	:= rm -rf
-CXXFLAGS:= -Wall -g
+CXXFLAGS:= -Wall -g -std=c++11
 start: $(EXE)
 $(EXE):$(OBJS)
 		$(CC) -o $@  $(OBJS) -L $(LIBDIR) $(addprefix -l, $(LIBS)); $(RM) $(SOURCEDIR)/*.o $(RM) $(SOURCEDIR)/*.co  $(RM) $(SOURCEDIR)/*.cco

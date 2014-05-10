@@ -27,13 +27,17 @@ string json_string(string keyword)
     //get edit distance
     Json::Value root ;
     Json::Value arr ;
+    // cast keyword to gbk ( because the diction jieba.dict.gbk is encoded with gbk )
     keyword = converter.utf8_to_gbk(keyword);
+
+    // query the keyword
     Query *pquery = Query::getInstance();
     vector<pair<string, int> > res_vec = pquery->getFamiliarWordsByStruct(keyword);
+
+    // serilize the result into json;
     for (vector<pair<string, int> >::iterator iter = res_vec.begin(); iter != res_vec.end(); ++iter)
     {
-        //serilize result into json;
-        Json::Value elem ;
+        Json::Value elem;
         elem["title"] = converter.gbk_to_utf8((*iter).first);
         elem["content"] = (*iter).second ;
         arr.append(elem);
@@ -41,16 +45,13 @@ string json_string(string keyword)
     root["files"] = arr;
     Json::FastWriter writer ;
     Json::StyledWriter stlwriter ;
+    
     return stlwriter.write(root);
 }
 
 
 void WorkThread::run()
 {
-    // #ifndef NDEBUG
-    //     string str( "thread start id is : ");
-    //     WRITE_NUM(str, (int)get_tid());
-    // #endif
     while (true)
     {
         Task t;
@@ -73,5 +74,16 @@ bool WorkThread::regeditThreadPool(ThreadPool *p_pool)
         return false;
     }
     p_pool_ = p_pool;
+    return true;
+}
+
+bool WorkThread::regeditCacheManager(CacheManagerThread *p_manager)
+{
+    if (!p_manager)
+    {
+        throw runtime_error("can not regedit CacheManager ");
+        return false;
+    }
+    p_manager_ = p_manager;
     return true;
 }
