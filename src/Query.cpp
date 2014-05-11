@@ -4,7 +4,7 @@
 #include "Configure.h"
 #include "Log.h"
 #include "Cache.h"
-
+#include "Index.h"
 
 #include <cstdlib>
 #include <queue>
@@ -63,6 +63,11 @@ vector<pair<string, int> > Query::getSimiliarWordsByStruct(string &keyword, Cach
     Diction *pdict = Diction::getInstance();
     //load the WHOLE dictionary to memory
     map<string, int> diction_map = pdict->getDictMap();
+
+    Index *pindex = Index::getInstance();
+#ifdef BUILD_INDEX
+    pindex->buildIndexFromDiction();
+#endif
     // use priority_queue to build an small-root-heap to select the top k similar word
     priority_queue<Data> result_queue;
 
@@ -131,7 +136,7 @@ vector<pair<string, int> > Query::getSimiliarWordsByStruct(string &keyword, Cach
 
     // select the top k ( ensured by priority_queue,it is a small-top heap ) most similar word to send to client
     CacheData cache_data;
-    
+
     vector<pair<string, int> > &cache_data_vec = cache_data.getDataVec();
 
     while ( topk_int-- && (!result_queue.empty()))
