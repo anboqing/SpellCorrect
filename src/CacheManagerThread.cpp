@@ -23,15 +23,15 @@ merge cache data with disk file and update every thread's cache
 then every thread has the same cache*/
 void CacheManagerThread::synchronizeGlobalCacheWithDisk()
 {
-// #ifndef NDEBUG
-//     WRITE_STR(string(" start synchronize Global Cache With Disk ......."));
-// #endif
+#ifndef NDEBUG
+    WRITE_STR(string(" start synchronize Global Cache With Disk ......."));
+#endif
     Configure *pconf = Configure::getInstance();
     string cache_path = pconf->getConfigByName("cache_file_path");
     string home_path = pconf->getConfigByName("home_path");
-// #ifndef NDEBUG
-//     WRITE_STR(string(" 1st. merge the disk cache data to memory ......."));
-// #endif
+#ifndef NDEBUG
+    WRITE_STR(string(" 1st. merge the disk cache data to memory ......."));
+#endif
     // 1st. merge the disk cache data to memory;
     ifstream ifs((home_path + cache_path).c_str());
     if (!(ifs.is_open()))
@@ -44,22 +44,22 @@ void CacheManagerThread::synchronizeGlobalCacheWithDisk()
     {
         istringstream istr(line);
         istr >> keyword;
-        map<string, int> mp;
+        vector<pair<string, int> > vec;
         while (istr >> pairword)
         {
             istr >> frequency;
-            mp.insert(make_pair(pairword, frequency));
+            vec.push_back(make_pair(pairword, frequency));
         }
-        CacheData data(mp);
+        CacheData data(vec);
         global_cache_map_.insert(make_pair(keyword, data));
     }
     ifs.close();
-// #ifndef NDEBUG
-//     WRITE_STR(string(" 2nd. write the cache data back to disk...... "));
-// #endif
-    // 2nd. write the cache data back to disk;
+#ifndef NDEBUG
+    WRITE_STR(string(" 2nd. write the cache data back to disk...... "));
+#endif
+    // 2nd. write the global cache data back to disk;
     ofstream ofs((home_path + cache_path).c_str());
-    //file lock;
+    // file lock;
     if (!(ofs.is_open()))
     {
         throw runtime_error("open cache_path file");
@@ -67,8 +67,8 @@ void CacheManagerThread::synchronizeGlobalCacheWithDisk()
     for (Cache::cache_map_type::iterator iter = global_cache_map_.begin() ; iter != global_cache_map_.end(); ++iter)
     {
         ofs << (*iter).first << "\t";
-        map<string, int> mp = (*iter).second.getDataMap();
-        for (map<string, int>::iterator it = mp.begin(); it != mp.end(); ++it)
+        vector<pair<string, int> > vec = (*iter).second.getDataVec();
+        for (vector<pair<string, int> >::iterator it = vec.begin(); it != vec.end(); ++it)
         {
             ofs << (*it).first << " " << (*it).second<<" ";
         }
@@ -84,9 +84,9 @@ void CacheManagerThread::synchronizeGlobalCacheWithDisk()
 */
 void CacheManagerThread::updateCache()
 {
-// #ifndef NDEBUG
-//     WRITE_STR(string(" start merge every thread's cache to global_cache_map_ ...... "));
-// #endif
+#ifndef NDEBUG
+    WRITE_STR(string(" start merge every thread's cache to global_cache_map_ ...... "));
+#endif
     for (vector<WorkThread>::iterator iter = worker_handles_vec_.begin();
             iter != worker_handles_vec_.end(); ++iter)
     {
@@ -101,9 +101,9 @@ void CacheManagerThread::updateCache()
     }
     // synchronize global cache data with disk file
     synchronizeGlobalCacheWithDisk();
-// #ifndef NDEBUG
-//     WRITE_STR(string("update every thread's cache : call their loadCacheFileToMemory()"));
-// #endif
+#ifndef NDEBUG
+    WRITE_STR(string("update every thread's cache : call their loadCacheFileToMemory()"));
+#endif
     // update every thread's cache : call their loadCacheToDisk();
     for (vector<WorkThread>::iterator iter = worker_handles_vec_.begin();
             iter != worker_handles_vec_.end(); ++iter)
@@ -128,15 +128,15 @@ void CacheManagerThread::run()
 {
     while (true)
     {
+#ifndef NDEBUG
+        WRITE_STR("start updateCache .......");
+#endif
+        updateCache();
         // 每隔一段时间就更新所有cache
         Configure *pconf = Configure::getInstance();
         string s_time = pconf->getConfigByName("cache_manager_sleep_seconds");
         int sleep_time = atoi(s_time.c_str());
         sleep(sleep_time);
-#ifndef NDEBUG
-        WRITE_STR("start updateCache .......");
-#endif
-        updateCache();
     }
 
 }

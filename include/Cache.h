@@ -2,23 +2,22 @@
 #define CACHE_H_
 
 #include <unordered_map>
-#include <map>
+#include <vector>
 #include <string>
 
 struct CacheData
 {
 private:
-    std::map<std::string, int> data_map_;
-    
+    std::vector<std::pair<std::string, int> > data_vec_;    
 public:
-    CacheData(const std::map<std::string, int> &data_map)
+    CacheData(const std::vector<std::pair<std::string, int> > &data_vec)
     {
-        data_map_ = data_map;
+        data_vec_ = data_vec;
     }
-    CacheData():data_map_(){}
+    CacheData():data_vec_(){}
     ~CacheData(){}
-    std::map<std::string,int> &getDataMap(){
-    	return data_map_;
+    std::vector<std::pair<std::string, int> > &getDataVec(){
+    	return data_vec_;
     }
 };
 
@@ -30,7 +29,7 @@ public:
     /*
         when the client request word not found in cache , add the result to cache;
     */
-    void addQueryResultToCacheMap(const std::string &keyword, CacheData &data);
+    void addQueryResultToCache(const std::string &keyword, CacheData &data);
     /*
         search in cache first;
     */

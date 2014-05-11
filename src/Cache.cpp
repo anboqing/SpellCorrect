@@ -15,7 +15,7 @@ Cache::~Cache() {}
 /*
     when the client request word not found in cache , add the result to cache;
 */
-void Cache::addQueryResultToCacheMap(const std::string &keyword, CacheData &data)
+void Cache::addQueryResultToCache(const std::string &keyword, CacheData &data)
 {
     pair<string, CacheData> data_pair = make_pair(keyword, data);
     cache_map_.insert(data_pair);
@@ -58,13 +58,13 @@ void Cache::loadCacheFileToMemory()
     {
         istringstream istr(line);
         istr >> keyword;
-        map<string, int> mp;
+        std::vector<pair<std::string, int> > vec;
         while (istr >> pairword)
         {
             istr >> frequency;
-            mp.insert(make_pair(pairword, frequency));
+            vec.push_back(make_pair(pairword, frequency));
         }
-        CacheData data(mp);
+        CacheData data(vec);
         cache_map_.insert(make_pair(keyword, data));
     }
     ifs.close();
@@ -87,10 +87,10 @@ void Cache::writeCacheToDisk()
     for (Cache::cache_map_type::iterator iter = cache_map_.begin() ; iter != cache_map_.end(); ++iter)
     {
         ofs << (*iter).first<< "\t";
-        map<string, int> mp = (*iter).second.getDataMap();
-        for (map<string, int>::iterator it = mp.begin(); it != mp.end(); ++it)
+        std::vector<pair<std::string, int> > vec = (*iter).second.getDataVec();
+        for (std::vector<pair<std::string, int> >::iterator it = vec.begin(); it != vec.end(); ++it)
         {
-            ofs << (*it).first <<"\t"<< (*it).second<<" \t";
+            ofs << (*it).first <<" "<< (*it).second<<" ";
         }
         ofs << "\n";
     }
