@@ -16,25 +16,26 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 
-    //把当前进程变为守护进程
+    // 把当前进程变为守护进程
     if (daemon(1, 1))
     {
-        throw runtime_error("daemon");
         WRITE_STR(string(" turn main to deamon error"));
+        throw runtime_error("daemon");
     }
     // config
     Configure *conf = Configure::getInstance();
     string mtn = conf->getConfigByName("max_thread_num");
     int max_thread_num = atoi(mtn.c_str());
-    ThreadPool pool(max_thread_num);
 
+    ThreadPool pool(max_thread_num);
+    
     string sport = conf->getConfigByName("port");
     istringstream ss(sport);
     short port = 0;
     if (!(ss >> port))
     {
-        throw runtime_error("sstream");
         WRITE_STR(string("trans str-port to int-port error"));
+        throw runtime_error("sstream");
     }
 
     // prepair
@@ -43,7 +44,6 @@ int main(int argc, char const *argv[])
     //bind
     socket.bindToAddess(server_addr);
     //start server;
-    
     UdpServer server(socket, server_addr, pool);
     server.start();
 }

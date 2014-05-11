@@ -18,6 +18,7 @@ using namespace std;
 UdpServer::UdpServer(Socket &sock, Address &addr, ThreadPool &pool) :
     socket_(sock), address_(addr), thread_manager_(pool)
 {
+
     thread_manager_.start();
 }
 
@@ -28,9 +29,6 @@ UdpServer::~UdpServer()
 
 void UdpServer::start()
 {
-#ifndef NDEBUG
-    WRITE_STR(string("server start up ready !"));
-#endif
     char buf[1024];
     memset(buf, 0, 1024);
     EncodingConverter converter;
@@ -40,8 +38,8 @@ void UdpServer::start()
                            address_.getAddressPoint(), &address_.length_);
         if (ret == -1)
         {
-            throw std::runtime_error("server recv error");
             WRITE_STR(string(" server receive client request error"));
+            throw std::runtime_error("server recv error");
         }
         //pack the client msg into task
         Task task;

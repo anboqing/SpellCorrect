@@ -16,10 +16,7 @@ class UdpServer : public NoneCopyable{
 public:
 	UdpServer(Socket &sock,Address &addr,ThreadPool &pool);
 	virtual ~UdpServer();
-	//regist a ThreadPool to UdpServer;
-	// void registPool(ThreadPool &pool){
-	// 	thread_manager_ = pool;
-	// }
+	//  regist a ThreadPool to UdpServer;
 	void start();
 private:
 	Socket &socket_;

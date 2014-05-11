@@ -1,35 +1,18 @@
 ip 127.0.0.1
-
 port  8888
-
 topk 5
-
 maxdistance 3
-
 max_diff_len 2
-
 max_thread_num 3
-
 cache_manager_sleep_seconds 60
-
 row_path row/
-
 home_path /home/anboqing/workspace/SpellCorrection/
-
 data_path data/jieba.dict.gbk
-
 mydict_path data/mydict.dat
-
 log_path log/log.txt
-
 mp_utf8_path dict/jieba.dict.utf8
-
 hmm_utf8_path dict/hmm_model.utf8
-
 mp_gbk_path dict/jieba.dict.gbk
-
 hmm_gbk_path dict/hmm_model.gbk
-
 exclude_path data/exclude.txt
-
 cache_file_path data/cache.dat

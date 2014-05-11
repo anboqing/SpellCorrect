@@ -3,7 +3,9 @@
 
 #include <vector>
 #include <string>
+
 #include "MutexLock.h"
+#include "Cache.h"
 
 class Data
 {
@@ -38,7 +40,11 @@ private:
     ~Query();
 public:
     static Query *getInstance();
-    std::vector<std::pair<std::string, int> > getSimiliarWordsByStruct(const std::string &keyword);
+    /*
+    1st. query from the thread's cache
+    2nd. if not found in cache, then query from the dictionary and add the query-result into cache-map
+    */
+    std::vector<std::pair<std::string, int> > getSimiliarWordsByStruct(std::string &keyword,Cache &cache);
 };
 
 

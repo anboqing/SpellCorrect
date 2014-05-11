@@ -15,7 +15,7 @@ Cache::~Cache() {}
 /*
     when the client request word not found in cache , add the result to cache;
 */
-void Cache::addResultToCatchMap(std::string &keyword, CacheData &data)
+void Cache::addQueryResultToCacheMap(const std::string &keyword, CacheData &data)
 {
     pair<string, CacheData> data_pair = make_pair(keyword, data);
     cache_map_.insert(data_pair);
@@ -90,7 +90,7 @@ void Cache::writeCacheToDisk()
         map<string, int> mp = (*iter).second.getDataMap();
         for (map<string, int>::iterator it = mp.begin(); it != mp.end(); ++it)
         {
-            ofs << (*it).first <<"\t"<< (*it).second;
+            ofs << (*it).first <<"\t"<< (*it).second<<" \t";
         }
         ofs << "\n";
     }

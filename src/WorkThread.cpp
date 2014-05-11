@@ -21,7 +21,7 @@
 #include "json/json.h"
 using namespace std;
 
-string json_string(string keyword)
+string WorkThread::json_string(string keyword)
 {
     EncodingConverter converter;
     //get edit distance
@@ -32,7 +32,11 @@ string json_string(string keyword)
 
     // query the keyword
     Query *pquery = Query::getInstance();
-    vector<pair<string, int> > res_vec = pquery->getFamiliarWordsByStruct(keyword);
+
+    // 1st. query from this thread's cache , need to pass the reference of this.cache_ to the Query function    
+    // 2nd. if not found in cache, then query from the dictionary and add the query-result into cache-map
+    
+    vector<pair<string, int> > res_vec = pquery->getSimiliarWordsByStruct(keyword,cache_);
 
     // serilize the result into json;
     for (vector<pair<string, int> >::iterator iter = res_vec.begin(); iter != res_vec.end(); ++iter)
@@ -45,7 +49,7 @@ string json_string(string keyword)
     root["files"] = arr;
     Json::FastWriter writer ;
     Json::StyledWriter stlwriter ;
-    
+
     return stlwriter.write(root);
 }
 

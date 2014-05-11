@@ -26,6 +26,8 @@ public:
 		return (struct sockaddr*)&address_;
 	}
 	socklen_t length_;
+
+
 private:
 	//server socket address;
 	struct sockaddr_in address_;

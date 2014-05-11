@@ -1,6 +1,8 @@
 #include "ThreadPool.h"
 #include <stdlib.h>
 
+#include <iostream>
+
 ThreadPool::ThreadPool(std::vector<WorkThread>::size_type num):
     total_thread_quantity_(num),
     thread_pool_(total_thread_quantity_),
@@ -36,9 +38,11 @@ bool ThreadPool::start()
         iter->start();
     }
     //start cache manager
-    cache_manager_.run();
+    // cache_manager_.run(); 直接调用run方法，里面是死循环，所以服务器不能启动了！！！该死的bug！！
+    cache_manager_.start();
     return true;
 }
+
 bool ThreadPool::stop()
 {
     if (!isPoolOpen()) //already stopped

@@ -48,9 +48,9 @@ void Log::writeLog(const std::string &log_msg,
     locker_.lock();
     writer_ << "[TIME]:"<<timer<< "  ";
     writer_ << log_msg;
-    writer_ << "   [FUNCTION]: "<< func;
-    writer_ << " [FILE] "<<file;
-    writer_ << " [LINE] " << line << " ";
+    // writer_ << "   [FUNCTION]: "<< func;
+    // writer_ << " [FILE] "<<file;
+    // writer_ << " [LINE] " << line << " ";
     writer_ << endl;
     locker_.unlock();
 }

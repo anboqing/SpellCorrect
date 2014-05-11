@@ -23,15 +23,15 @@ merge cache data with disk file and update every thread's cache
 then every thread has the same cache*/
 void CacheManagerThread::synchronizeGlobalCacheWithDisk()
 {
-#ifndef NDEBUG
-    WRITE_STR(string("start synchronize Global Cache With Disk ......."));
-#endif
+// #ifndef NDEBUG
+//     WRITE_STR(string(" start synchronize Global Cache With Disk ......."));
+// #endif
     Configure *pconf = Configure::getInstance();
     string cache_path = pconf->getConfigByName("cache_file_path");
     string home_path = pconf->getConfigByName("home_path");
-#ifndef NDEBUG
-    WRITE_STR(string("1st. merge the disk cache data to memory ......."));
-#endif
+// #ifndef NDEBUG
+//     WRITE_STR(string(" 1st. merge the disk cache data to memory ......."));
+// #endif
     // 1st. merge the disk cache data to memory;
     ifstream ifs((home_path + cache_path).c_str());
     if (!(ifs.is_open()))
@@ -54,9 +54,9 @@ void CacheManagerThread::synchronizeGlobalCacheWithDisk()
         global_cache_map_.insert(make_pair(keyword, data));
     }
     ifs.close();
-#ifndef NDEBUG
-    WRITE_STR(string("2nd. write the cache data back to disk......."));
-#endif
+// #ifndef NDEBUG
+//     WRITE_STR(string(" 2nd. write the cache data back to disk...... "));
+// #endif
     // 2nd. write the cache data back to disk;
     ofstream ofs((home_path + cache_path).c_str());
     //file lock;
@@ -70,7 +70,7 @@ void CacheManagerThread::synchronizeGlobalCacheWithDisk()
         map<string, int> mp = (*iter).second.getDataMap();
         for (map<string, int>::iterator it = mp.begin(); it != mp.end(); ++it)
         {
-            ofs << (*it).first << "\t" << (*it).second;
+            ofs << (*it).first << " " << (*it).second<<" ";
         }
         ofs << "\n";
     }
@@ -84,9 +84,9 @@ void CacheManagerThread::synchronizeGlobalCacheWithDisk()
 */
 void CacheManagerThread::updateCache()
 {
-#ifndef NDEBUG
-    WRITE_STR(string("start merge every thread's cache to global_cache_map_ ......."));
-#endif
+// #ifndef NDEBUG
+//     WRITE_STR(string(" start merge every thread's cache to global_cache_map_ ...... "));
+// #endif
     for (vector<WorkThread>::iterator iter = worker_handles_vec_.begin();
             iter != worker_handles_vec_.end(); ++iter)
     {
@@ -101,29 +101,28 @@ void CacheManagerThread::updateCache()
     }
     // synchronize global cache data with disk file
     synchronizeGlobalCacheWithDisk();
-#ifndef NDEBUG
-    WRITE_STR(string("update every thread's cache : call their loadCacheFileToMemory()"));
-#endif
+// #ifndef NDEBUG
+//     WRITE_STR(string("update every thread's cache : call their loadCacheFileToMemory()"));
+// #endif
     // update every thread's cache : call their loadCacheToDisk();
     for (vector<WorkThread>::iterator iter = worker_handles_vec_.begin();
             iter != worker_handles_vec_.end(); ++iter)
     {
         Cache &cache = iter->getCacheHandle();
         // strategy 1: every thread load from disk;
-        cache.loadCacheFileToMemory();
+        // cache.loadCacheFileToMemory();
 
         // strategy 2: every thread's cache data from manager's cache-map
         
         // update every thread's cache data from manager's cache-map
-        // Cache::cache_map_type &thread_cache_map = cache.getCacheDataMap();
-        // for (Cache::cache_map_type::iterator it = global_cache_map_.begin();
-        //         it != global_cache_map_.end(); ++it)
-        // {
-        //     thread_cache_map[(*it).first] = (*it).second;
-        // }
+        Cache::cache_map_type &thread_cache_map = cache.getCacheDataMap();
+        for (Cache::cache_map_type::iterator it = global_cache_map_.begin();
+                it != global_cache_map_.end(); ++it)
+        {
+            thread_cache_map[(*it).first] = (*it).second;
+        }
     }
 }
-
 
 void CacheManagerThread::run()
 {

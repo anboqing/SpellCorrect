@@ -30,7 +30,7 @@ public:
     /*
         when the client request word not found in cache , add the result to cache;
     */
-    void addResultToCatchMap(std::string &keyword, CacheData &data);
+    void addQueryResultToCacheMap(const std::string &keyword, CacheData &data);
     /*
         search in cache first;
     */
@@ -51,6 +51,7 @@ public:
     cache_map_type &getCacheDataMap(){
     	return cache_map_;
     }
+
 private:
     std::unordered_map<std::string, CacheData> cache_map_;
 };
