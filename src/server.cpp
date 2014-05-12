@@ -3,6 +3,8 @@
 #include "UdpServer.h"
 #include "Configure.h"
 #include "Log.h"
+#include "Index.h"
+#include "Diction.h"
 
 #include <iostream>
 #include <unistd.h>
@@ -22,13 +24,19 @@ int main(int argc, char const *argv[])
         WRITE_STR(string(" turn main to deamon error"));
         throw runtime_error("daemon");
     }
+
+#ifdef BUILD_INDEX
+    Index *p_index = Index::getInstance();
+    p_index->buildIndexFromDiction();
+#endif
+    Diction::getInstance();
     // config
     Configure *conf = Configure::getInstance();
     string mtn = conf->getConfigByName("max_thread_num");
     int max_thread_num = atoi(mtn.c_str());
 
     ThreadPool pool(max_thread_num);
-    
+
     string sport = conf->getConfigByName("port");
     istringstream ss(sport);
     short port = 0;

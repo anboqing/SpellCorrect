@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 #include "Log.h"
+#include "EncodingConverter.h"
+#include <iostream>
 
 int getMin(int a, int b, int c)
 {
@@ -17,6 +19,8 @@ bool isGbkFirstByte(unsigned char c)
 {
     return c >= 0x81 && c <= 0xFE;
 }
+
+
 
 void saveGbk2Vector(const std::string &str, std::vector<uint16_t> &v)
 {
@@ -44,6 +48,7 @@ void saveGbk2Vector(const std::string &str, std::vector<uint16_t> &v)
 
 int editDistance(const std::vector<uint16_t>  &sa, const std::vector<uint16_t> &sb)
 {
+
     int **matrix = new int *[sa.size() + 1];
     for (std::vector<uint16_t>::size_type i = 0; i <= sa.size(); ++i)
     {
@@ -64,6 +69,7 @@ int editDistance(const std::vector<uint16_t>  &sa, const std::vector<uint16_t> &
     {
         for (std::vector<uint16_t>::size_type j = 1; j <= sb.size(); ++j)
         {
+
             int cost = sa[i - 1] == sb[j - 1] ? 0 : 1;
             matrix[i][j] =
                 getMin( matrix[i - 1][j] + 1,
@@ -82,11 +88,19 @@ int editDistance(const std::vector<uint16_t>  &sa, const std::vector<uint16_t> &
 
 int getEditDistance(const std::string &sa, const std::string &sb)
 {
-    std::vector<uint16_t> va, vb;
-    saveGbk2Vector(sa, va);
-    saveGbk2Vector(sb, vb);
-    return editDistance(va, vb);
+    if (sa.size() != 0 && sb.size() != 0)
+    {
+        std::vector<uint16_t> va, vb;
+        saveGbk2Vector(sa, va);
+        saveGbk2Vector(sb, vb);
+        return editDistance(va, vb);
+    }
+    else
+    {
+        return 0x11111111;
+    }
 }
+
 // int editDistance(const std::string &sa, const std::string &sb)
 // {
 //     int **matrix = new int *[sa.size() + 1];
@@ -124,8 +138,5 @@ int getEditDistance(const std::string &sa, const std::string &sb)
 //     delete matrix;
 //     return ret;
 // }
-
-
-
 
 #endif

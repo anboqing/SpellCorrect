@@ -72,59 +72,84 @@ void Index::loadIndexMapFromIndexFile()
 }
 
 
+
+
+vector<string> Index::splitStringIntoLetters(std::string &keyword)
+{
+    vector<string> word_letters;
+    string::size_type len = keyword.size();
+    char *buf = new char[len + 1];
+    strcpy(buf, keyword.c_str());
+    for (string::size_type i = 0; i < len + 1 ;)
+    {
+        if (buf[i] < 0)
+        {
+            // is gbk
+            char *let = new char[3];
+            let[0] = buf[i++];
+            let[1] = buf[i++];
+            let[2] = '\0';
+            // insert the letter and it's index in vector into index_map
+            string letter(let);
+            delete[] let;
+            // find out wether the index map contains this keywrod or not
+            // if it contains this keyword then add the index-in-vec into set
+            word_letters.push_back(letter);
+        }
+        else if (buf[i] != '\0')
+        {
+            // is ASCII letter
+            char *let = new char[2];
+            let[0] = buf[i++];
+            let[1] = '\0';
+            string letter(let);
+            word_letters.push_back(letter);
+            delete[] let;
+        }
+        else
+        {
+            i++;
+        }
+    }
+    return word_letters;
+}
+
 void Index::loadIndexVecFromDicttion()
 {
-#ifndef NDEBUG
-    WRITE_STR(string("start loadIndexVecFromDicttion--"));
-#endif
-    //load the diction-data from global dictionany
-    Diction *pdict = Diction::getInstance();
-    map<string, int> dict_map = pdict->getDictMap();
-    for (auto iter : dict_map)
+    if (index_vec_.size() == 0)
     {
-        index_vec_.push_back(iter);
+        //load the diction-data from global dictionany
+        Diction *pdict = Diction::getInstance();
+        map<string, int> dict_map = pdict->getDictMap();
+#ifdef BUILD_INDEX
+        cout << "diction.size() is : " <<  dict_map.size() << endl;
+#endif
+        for (auto &iter : dict_map)
+        {
+            index_vec_.push_back(iter);
+        }
+#ifdef BUILD_INDEX
+        cout << "loadIndexVecFromDicttion index_vec_.size() is ****: " <<  index_vec_.size() << endl;
+#endif
     }
 }
 
 void Index::buildIndexFromDiction()
 {
-#ifndef NDEBUG
+#ifdef BUILD_INDEX
     WRITE_STR(string("start buildIndexFromDiction--"));
 #endif
     loadIndexVecFromDicttion();
+    cout << " buildIndexFromDiction index vec.size()----------" << index_vec_.size();
     // traverse the index_vec_ and build index;
     for (IndexVecType::size_type ix = 0 ; ix != index_vec_.size(); ++ix)
     {
         string word = (index_vec_[ix]).first;
         // split it into one letter by one letter
-        vector<string> word_letters;
-        string::size_type len = word.size();
-        char *buf = new char[len + 1];
-        strcpy(buf, word.c_str());
-        for (string::size_type i = 0; i < len + 1 ;)
+        vector<string> word_letters  = splitStringIntoLetters(word);
+        for (auto letter : word_letters)
         {
-            if (buf[i] < 0)
-            {
-                // is gbk
-                char *let = new char[3];
-                let[0] = buf[i++];
-                let[1] = buf[i++];
-                let[2] = '\0';
-                // insert the letter and it's index in vector into index_map
-                string keyword(let);
-                delete[] let;
-                // find out wether the index map contains this keywrod or not
-                // if it contains this keyword then add the index-in-vec into set
-                (index_map_[keyword]).insert(ix);
-            }else{
-                // is ASCII letter
-                char *let = new char[2];
-                let[0] = buf[i++];
-                let[1] = '\0';
-                string keyword(let);
-                (index_map_[keyword]).insert(ix);
-                delete[] let;
-            }
+            (index_map_[letter]).insert(ix);
         }
     }
     writeIndexMapToIndexFile();
@@ -132,7 +157,7 @@ void Index::buildIndexFromDiction()
 
 void Index::writeIndexMapToIndexFile()
 {
-#ifndef NDEBUG
+#ifdef BUILD_INDEX
     WRITE_STR(string("start writeIndexMapToIndexFile--"));
 #endif
     Configure *pconf = Configure::getInstance();

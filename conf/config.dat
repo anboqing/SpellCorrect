@@ -2,13 +2,13 @@ ip 127.0.0.1
 
 port  8888
 
-topk 5
+topk 10
 
-maxdistance 3
+maxdistance 10
 
-max_diff_len 2
+max_diff_len 5
 
-max_thread_num 3
+max_thread_num 4
 
 cache_manager_sleep_seconds 60
 

@@ -21,6 +21,19 @@ public:
 
     void buildIndexFromDiction();
 
+    IndexMapType &getIndexMap()
+    {
+        return index_map_;
+    }
+
+    IndexVecType &getIndexVec()
+    {
+        return index_vec_;
+    }
+
+    std::vector<std::string> splitStringIntoLetters(std::string &keyword);
+
+    
 private:
 
     Index();
