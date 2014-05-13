@@ -21,7 +21,7 @@
 #include "json/json.h"
 using namespace std;
 
-string WorkThread::json_string(string keyword)
+string WorkThread::excute(string keyword)
 {
     EncodingConverter converter;
     //get edit distance
@@ -60,7 +60,7 @@ void WorkThread::run()
     {
         Task t;
         p_pool_->getTaskFromQueue(&t);
-        string result = json_string(t.expression_);
+        string result = excute(t.expression_);
         int ret = sendto(t.server_fd_, result.c_str(), result.size(), 0, (struct sockaddr *)&t.address_, t.len_);
         if (ret == -1)
         {
@@ -70,8 +70,9 @@ void WorkThread::run()
     }
 }
 
-bool WorkThread::regeditThreadPool(ThreadPool *p_pool)
+bool WorkThread::registThreadPool(ThreadPool *p_pool)
 {
+    // regist Pool to tell thread get task from where
     if (!p_pool)
     {
         throw runtime_error("can not regeditThreadPool ");

@@ -29,13 +29,20 @@ int main(int argc, char const *argv[])
     Index *p_index = Index::getInstance();
     p_index->buildIndexFromDiction();
 #endif
-    Diction::getInstance();
-    // config
+
+    //initial config
     Configure *conf = Configure::getInstance();
+    //initial log
+    Log::getInstance();
     string mtn = conf->getConfigByName("max_thread_num");
     int max_thread_num = atoi(mtn.c_str());
-
+    //initial thread pool
     ThreadPool pool(max_thread_num);
+    //initial diction
+    Diction::getInstance();
+    //initial Index
+    Index::getInstance();
+
 
     string sport = conf->getConfigByName("port");
     istringstream ss(sport);

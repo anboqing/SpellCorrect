@@ -5,8 +5,6 @@
 [TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
 [TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
 [TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
-[TIME]:17:33:25   find result in cache    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 119 
-[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
 [TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
 [TIME]:17:33:23  start loadIndexMapFromIndexFile--   [FUNCTION]: void Index::loadIndexMapFromIndexFile() [FILE] src/Index.cpp [LINE] 48 
 [TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
@@ -53,6 +51,226 @@
 [TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
 [TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
 [TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   find result in cache    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 119 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   find result in cache    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 119 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   find result in cache    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 119 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:25  start searchFromCache -----------------   [FUNCTION]: bool searchFromCache(const string&, Cache&, CacheData&) [FILE] src/Query.cpp [LINE] 41 
+[TIME]:17:33:25   not find result in cache ,start find in index    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 134 
+[TIME]:17:33:25   start find result in index    [FUNCTION]: std::set<long unsigned int>& queryFromIndex(std::string&, Index::IndexMapType&, std::set<long unsigned int>&) [FILE] src/Query.cpp [LINE] 68 
+[TIME]:17:33:25   start find word in index_vec    [FUNCTION]: std::vector<std::pair<std::basic_string<char>, int> > Query::getSimiliarWordsByStruct(std::string&, Cache&) [FILE] src/Query.cpp [LINE] 147 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
+[TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
+[TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
+[TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 
+[TIME]:17:33:18   1st. merge the disk cache data to memory .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 33 
+[TIME]:17:33:18   2nd. write the cache data back to disk......    [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 58 
+[TIME]:17:33:18  update every thread's cache : call their loadCacheFileToMemory()   [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 105 
 [TIME]:17:33:18  start updateCache .......   [FUNCTION]: virtual void CacheManagerThread::run() [FILE] src/CacheManagerThread.cpp [LINE] 132 
 [TIME]:17:33:18   start merge every thread's cache to global_cache_map_ ......    [FUNCTION]: void CacheManagerThread::updateCache() [FILE] src/CacheManagerThread.cpp [LINE] 88 
 [TIME]:17:33:18   start synchronize Global Cache With Disk .......   [FUNCTION]: void CacheManagerThread::synchronizeGlobalCacheWithDisk() [FILE] src/CacheManagerThread.cpp [LINE] 27 

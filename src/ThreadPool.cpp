@@ -17,7 +17,7 @@ ThreadPool::ThreadPool(std::vector<WorkThread>::size_type num):
     for (std::vector<WorkThread>::iterator iter = thread_pool_.begin();
             iter != thread_pool_.end(); iter++)
     {
-        iter -> regeditThreadPool(this);
+        iter -> registThreadPool(this);
     }
 }
 ThreadPool::~ThreadPool()

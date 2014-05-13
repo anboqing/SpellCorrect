@@ -18,9 +18,11 @@ CacheManagerThread::CacheManagerThread(std::vector<WorkThread> &worker_handles_v
 
 CacheManagerThread::~CacheManagerThread() {}
 
-/*after some specific time ,
-merge cache data with disk file and update every thread's cache
-then every thread has the same cache*/
+/*
+    after some specific time ,
+    merge cache data with disk file and update every thread's cache
+    then every thread has the same cache
+*/
 void CacheManagerThread::synchronizeGlobalCacheWithDisk()
 {
 #ifndef NDEBUG
@@ -109,10 +111,10 @@ void CacheManagerThread::updateCache()
             iter != worker_handles_vec_.end(); ++iter)
     {
         Cache &cache = iter->getCacheHandle();
-        // strategy 1: every thread load from disk;
+// strategy 1: every thread load from disk;
         // cache.loadCacheFileToMemory();
 
-        // strategy 2: every thread's cache data from manager's cache-map
+// strategy 2: every thread's cache data from manager's cache-map
         
         // update every thread's cache data from manager's cache-map
         Cache::cache_map_type &thread_cache_map = cache.getCacheDataMap();
@@ -138,5 +140,4 @@ void CacheManagerThread::run()
         int sleep_time = atoi(s_time.c_str());
         sleep(sleep_time);
     }
-
 }

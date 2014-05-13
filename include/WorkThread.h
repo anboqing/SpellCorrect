@@ -15,8 +15,8 @@ class WorkThread : public Thread
 {
 public:
     void run();
-    bool regeditThreadPool(ThreadPool *p_pool);
-    bool regeditCacheManager(CacheManagerThread *p_manager);
+    bool registThreadPool(ThreadPool *p_pool);
+    bool registCacheManager(CacheManagerThread *p_manager);
     Cache &getCacheHandle()
     {
         return cache_;
@@ -25,10 +25,8 @@ private:
     ThreadPool *p_pool_;
     // has-a Cache instance;
     Cache cache_;
-
     CacheManagerThread *p_manager_;
-
-    std::string json_string(std::string keyword);
+    std::string excute(std::string keyword);
 };
 
 #endif

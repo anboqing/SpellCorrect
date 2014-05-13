@@ -56,10 +56,10 @@ bool searchFromCache(const string &keyword, Cache &cache, CacheData &result)
 }
 
 
-//test
 #ifndef NDEBUG
 EncodingConverter converter;
 #endif
+
 set<Index::IndexVecType::size_type> &queryFromIndex(string &keyword,
         Index::IndexMapType &index_map,
         set<Index::IndexVecType::size_type> &allIndexes)
@@ -93,7 +93,7 @@ set<Index::IndexVecType::size_type> &queryFromIndex(string &keyword,
     1st. query from the thread's cache
     2nd. if not found in cache, then query from the dictionary and add the query-result into cache-map
 */
-vector<pair<string, int> > Query::getSimiliarWordsByStruct(string &keyword, Cache &cache)
+vector<pair<string, int> > Query::getSimiliarWords(string &keyword, Cache &cache)
 {
     //load config message:
     Configure *pconf = Configure::getInstance();
@@ -165,13 +165,14 @@ vector<pair<string, int> > Query::getSimiliarWordsByStruct(string &keyword, Cach
             result_queue.push(data);
         }
     }
-// #ifndef NDEBUG
-//     string after(" after find word in index_vec , index_vec.size() is ");
-//     priority_queue<Data>::size_type size = result_queue.size();
-//     cout << after << size << endl;
-// #endif
+    // #ifndef NDEBUG
+    //     string after(" after find word in index_vec , index_vec.size() is ");
+    //     priority_queue<Data>::size_type size = result_queue.size();
+    //     cout << after << size << endl;
+    // #endif
 
- // since we have Index,I don't need to query diction anymore!
+
+    // since we have Index,I don't need to query diction anymore!
 
     // #ifndef NDEBUG
     //     WRITE_STR(string(" not find result in index ,start find in diction? "));
@@ -198,7 +199,7 @@ vector<pair<string, int> > Query::getSimiliarWordsByStruct(string &keyword, Cach
     // }
     //==========================================================================
     //get configure of topk parameter
-    
+
     string topk_str = pconf->getConfigByName("topk");
     int topk_int = atoi(topk_str.c_str());
 

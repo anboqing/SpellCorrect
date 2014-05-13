@@ -42,9 +42,9 @@ public:
     static Query *getInstance();
     /*
     1st. query from the thread's cache
-    2nd. if not found in cache, then query from the dictionary and add the query-result into cache-map
+    2nd. if not found in cache, then query from the index and add the query-result into cache-map
     */
-    std::vector<std::pair<std::string, int> > getSimiliarWordsByStruct(std::string &keyword,Cache &cache);
+    std::vector<std::pair<std::string, int> > getSimiliarWords(std::string &keyword,Cache &cache);
 };
 
 
